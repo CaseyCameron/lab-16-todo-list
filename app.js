@@ -1,5 +1,27 @@
-// import functions and grab DOM elements
+import { getUser, setUser, createUser, checkIfUserExists, usernameAndPasswordMatch, login } from './local-storage-utils.js';
 
-// initialize state
+const form = document.querySelector('form');
+const div = document.querySelector('div');
 
-// set event listeners to update state and DOM
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    const username = formData.get('username');
+    const password = formData.get('password');
+
+    if (!checkIfUserExists(username)) {
+        createUser(username, password);
+    } else {
+        if (usernameAndPasswordMatch(username, password)) {
+            login(username);
+            window.location = './todo/index.html';
+        } else {
+            div.textContent = 'Invalid username or password.';
+        }
+    }
+
+
+
+});
