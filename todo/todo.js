@@ -1,10 +1,11 @@
-import { getUser, addTask, setUser } from '../local-storage-utils.js';
-import { renderTodo }
+import { getUser, addTask } from '../local-storage-utils.js';
+import { renderTodo } from '../task-utils.js';
 
 const user = getUser();
+
 if (!user) {
     window.location = '../index.html';
-}
+} else renderTodo();
 
 
 const form = document.querySelector('form');

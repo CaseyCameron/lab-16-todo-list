@@ -1,3 +1,5 @@
+import { getUser, setUser } from './local-storage-utils.js';
+
 export function renderLi(task) {
     const li = document.createElement('li');
     li.textContent = task.task;
