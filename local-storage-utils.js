@@ -38,8 +38,10 @@ export function login(username) {
     localStorage.setItem('LOGGED_IN', username);
 }
 
-export function addTask(task){
+export function addTask(task) {
     const user = getUser();
     user.tasks.push(task);
     setUser(user);
 }
+
+//export function renderTasks(tasks)  
