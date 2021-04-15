@@ -1,60 +1,31 @@
-import { getUser, addTask, setUser } from '../local-storage-utils.js';
+import { getUser, addTask, logout } from '../local-storage-utils.js';
+import { renderTodo } from '../task-utils.js';
 
 const user = getUser();
-if (!user) {
+const logged_in = localStorage.getItem('LOGGED_IN');
+
+if (logged_in === 'false' && user) {
     window.location = '../index.html';
-}
+} else renderTodo();
 
 
 const form = document.querySelector('form');
+const button = document.querySelector('button');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+
     const taskData = new FormData(form);
     const task = taskData.get('new-task');
     addTask(task);
-    const ul = document.querySelector('ul');
-    ul.textContent = '';
-    const user = getUser();
-    user.tasks.forEach(task => {
+    renderTodo();
 
-
-
-        ul.append(li);
-    });
     form.reset();
+});
 
-}
-);
+button.addEventListener('click', () => {
+    logout();
+    window.location.href = '../index.html';
+});
 
-function renderLi(task) {
-    const li = document.createElement('li');
-    li.textContent = task.task;
-
-    li.addEventListener('click', () => {
-        completeLi(task.task);
-        renderTodo();
-    });
-
-    return li;
-}
-
-function completeLi(todo) {
-    const user = getUser();
-    const matchingTask = user.tasks.find((item) => item.task === todo);
-
-
-    matchingTask.completed = true;
-    setUser(user);
-}
-
-function renderTodo() {
-    const user = getUser();
-    const ul = document.querySelector('ul');
-    ul.textContent = '';
-    user.tasks.forEach(task => {
-        const li = renderLi(task);
-        ul.append(li);
-    });
-}
 

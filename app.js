@@ -5,7 +5,7 @@ const form = document.querySelector('form');
 const div = document.querySelector('div');
 
 
-onLoad('./todo/index.html');
+if (localStorage.getItem('LOGGED_IN') !== 'false') onLoad('./todo/index.html');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
