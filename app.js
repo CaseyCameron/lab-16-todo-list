@@ -4,7 +4,6 @@ import { onLoad } from './utils.js';
 const form = document.querySelector('form');
 const errorMessage = document.querySelector('.error');
 
-
 if (localStorage.getItem('LOGGED_IN') !== 'false') onLoad('./todo/index.html');
 
 form.addEventListener('submit', (e) => {
@@ -17,12 +16,14 @@ form.addEventListener('submit', (e) => {
 
     if (!checkIfUserExists(username)) {
         errorMessage.textContent = 'Invalid username or password.';
+        errorMessage.classList.add('swing');
     } else {
         if (usernameAndPasswordMatch(username, password)) {
             login(username);
             window.location = './todo/index.html';
         } else {
             errorMessage.textContent = 'Invalid username or password.';
+            errorMessage.classList.add('swing');
         }
     }
 });
