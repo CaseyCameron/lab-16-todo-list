@@ -208,8 +208,14 @@ input {
 
 button {
     background-color: black;
-    color: darkgreen;
+    color: coral;
     border-radius: 8px;
     border-color: dimgrey;
     font-family: 'Caveat', cursive;
+}
+
+#lg-but {
+    margin-top: 25px;
+    margin-right: 25px;
+    height: 30px;
 }
