@@ -1,4 +1,4 @@
-import { createUser, checkIfUserExists, usernameAndPasswordMatch, login } from './local-storage-utils.js';
+import { checkIfUserExists, usernameAndPasswordMatch, login } from './local-storage-utils.js';
 import { onLoad } from './utils.js';
 
 const form = document.querySelector('form');
