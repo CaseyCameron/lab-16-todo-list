@@ -3,6 +3,11 @@ import { getUser, setUser, createUser, checkIfUserExists, usernameAndPasswordMat
 const form = document.querySelector('form');
 const div = document.querySelector('div');
 
+const user = getUser();
+if (user){
+    window.location = './todo/index.html';
+}
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -21,7 +26,5 @@ form.addEventListener('submit', (e) => {
             div.textContent = 'Invalid username or password.';
         }
     }
-
-
-
 });
+
