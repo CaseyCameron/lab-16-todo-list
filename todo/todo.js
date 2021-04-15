@@ -3,6 +3,7 @@ import { renderTodo } from '../task-utils.js';
 
 const user = getUser();
 const logged_in = localStorage.getItem('LOGGED_IN');
+let counter = 0;
 
 if (logged_in === 'false' && user) {
     window.location = '../index.html';
@@ -17,7 +18,7 @@ form.addEventListener('submit', (e) => {
 
     const taskData = new FormData(form);
     const task = taskData.get('new-task');
-    addTask(task);
+    addTask(counter++, task);
     renderTodo();
 
     form.reset();

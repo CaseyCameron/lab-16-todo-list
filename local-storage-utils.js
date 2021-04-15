@@ -44,8 +44,9 @@ export function logout() {
     localStorage.setItem('LOGGED_IN', stringyFalse);
 }
 
-export function addTask(task) {
+export function addTask(id, task) {
     const newTask = {
+        id: id,  
         task,
         completed: false
     };
