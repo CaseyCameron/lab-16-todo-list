@@ -43,5 +43,3 @@ export function addTask(task) {
     user.tasks.push(task);
     setUser(user);
 }
-
-//export function renderTasks(tasks)  
