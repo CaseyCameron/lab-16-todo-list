@@ -17,6 +17,7 @@ export function createUser(username, password) {
         password,
         tasks: []
     };
+    login(username);
     setUser(user);
 }
 
@@ -36,6 +37,11 @@ export function usernameAndPasswordMatch(username, password) {
 
 export function login(username) {
     localStorage.setItem('LOGGED_IN', username);
+}
+
+export function logout() {
+    const stringyFalse = JSON.stringify(false);
+    localStorage.setItem('LOGGED_IN', stringyFalse);
 }
 
 export function addTask(task) {

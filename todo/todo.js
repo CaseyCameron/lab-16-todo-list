@@ -1,14 +1,16 @@
-import { getUser, addTask } from '../local-storage-utils.js';
+import { getUser, addTask, logout } from '../local-storage-utils.js';
 import { renderTodo } from '../task-utils.js';
 
 const user = getUser();
+const logged_in = localStorage.getItem('LOGGED_IN');
 
-if (!user) {
+if (logged_in === 'false' && user) {
     window.location = '../index.html';
 } else renderTodo();
 
 
 const form = document.querySelector('form');
+const button = document.querySelector('button');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -19,6 +21,11 @@ form.addEventListener('submit', (e) => {
     renderTodo();
 
     form.reset();
+});
+
+button.addEventListener('click', () => {
+    logout();
+    window.location.href = '../index.html';
 });
 
 

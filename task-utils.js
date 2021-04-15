@@ -4,6 +4,10 @@ export function renderLi(task) {
     const li = document.createElement('li');
     li.textContent = task.task;
 
+    if (task.completed === true) {
+        li.classList.add('completed');
+    }
+
     li.addEventListener('click', () => {
         completeLi(task.task);
         renderTodo();
