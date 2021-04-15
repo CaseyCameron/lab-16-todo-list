@@ -37,3 +37,9 @@ export function usernameAndPasswordMatch(username, password) {
 export function login(username) {
     localStorage.setItem('LOGGED_IN', username);
 }
+
+export function addTask(task){
+    const user = getUser();
+    user.tasks.push(task);
+    setUser(user);
+}
