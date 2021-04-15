@@ -19,7 +19,7 @@ body {
     --footer-height: 25px;
     
     font-family: 'Titillium Web', sans-serif;
-    background-color: var(--color2);
+    background-color: rgba(98, 98, 172, 0.726);
 }
 
 main {
@@ -28,6 +28,7 @@ main {
     justify-content: center;
     align-items: center;
     margin-bottom: calc(var(--footer-height));
+    
 }
 
 section {
@@ -62,8 +63,10 @@ footer {
 
 
 h2 {
-    font-size: 1.8rem;
+    font-size: 3.8rem;
     font-weight: bold;
+    font-family: 'Caveat', cursive;
+    padding: 10px;
 }
 
 .gutter-right {
@@ -114,4 +117,41 @@ footer {
 
 .completed {
     text-decoration: line-through;
+}
+
+#the-list {
+    background-image: url('../img/notepad.PNG');
+    width: 80%;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: 25px;
+    margin: 10px;
+}
+
+input {
+    background-color: coral;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    margin: 10px;
+}
+
+.blinking {
+    animation:blinkingText 1.2s infinite;
+    text-shadow: 5px 5px 5px black;
+}
+
+@keyframes blinkingText{
+    0%{     color: violet;}
+    49%{    color: violet;}
+    60%{    color: transparent;}
+    99%{    color:transparent;}
+    100%{   color: #000;}
+}
+
+button {
+    background-color: black;
+    color: darkgreen;
+    border-radius: 8px;
+    border-color: dimgrey;
+    font-family: 'Caveat', cursive;
 }
