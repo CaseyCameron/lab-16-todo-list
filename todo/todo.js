@@ -1,4 +1,4 @@
-import { getUser, addTask } from '../local-storage-utils.js';
+import { getUser, addTask, setUser } from '../local-storage-utils.js';
 
 const user = getUser();
 if (!user) {
@@ -17,17 +17,44 @@ form.addEventListener('submit', (e) => {
     ul.textContent = '';
     const user = getUser();
     user.tasks.forEach(task => {
-        const li = document.createElement('li');
-        li.textContent = task.task;
-        li.addEventListener('click', () => {
-            const user = getUser();
-            const matchingTask = user.tasks.find((item) => task === item.task);
-            matchingTask.completed = true;
-        });
+
+
+
         ul.append(li);
     });
     form.reset();
 
 }
 );
+
+function renderLi(task) {
+    const li = document.createElement('li');
+    li.textContent = task.task;
+
+    li.addEventListener('click', () => {
+        completeLi(task.task);
+        renderTodo();
+    });
+
+    return li;
+}
+
+function completeLi(todo) {
+    const user = getUser();
+    const matchingTask = user.tasks.find((item) => item.task === todo);
+
+
+    matchingTask.completed = true;
+    setUser(user);
+}
+
+function renderTodo() {
+    const user = getUser();
+    const ul = document.querySelector('ul');
+    ul.textContent = '';
+    user.tasks.forEach(task => {
+        const li = renderLi(task);
+        ul.append(li);
+    });
+}
 
