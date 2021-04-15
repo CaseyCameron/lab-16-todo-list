@@ -2,7 +2,7 @@ import { createUser, checkIfUserExists, usernameAndPasswordMatch, login } from '
 import { onLoad } from './utils.js';
 
 const form = document.querySelector('form');
-const div = document.querySelector('div');
+const errorMessage = document.querySelector('.error');
 
 
 if (localStorage.getItem('LOGGED_IN') !== 'false') onLoad('./todo/index.html');
@@ -16,14 +16,14 @@ form.addEventListener('submit', (e) => {
     const password = formData.get('password');
 
     if (!checkIfUserExists(username)) {
-        createUser(username, password);
+        errorMessage.textContent = 'Invalid username or password.';
     } else {
         if (usernameAndPasswordMatch(username, password)) {
             login(username);
             window.location = './todo/index.html';
         } else {
-            div.textContent = 'Invalid username or password.';
+            errorMessage.textContent = 'Invalid username or password.';
         }
-    } window.location = './todo/index.html';
+    }
 });
 
