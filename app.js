@@ -1,4 +1,4 @@
-import { getUser, setUser, createUser, checkIfUserExists, usernameAndPasswordMatch, login } from './local-storage-utils.js';
+import { createUser, checkIfUserExists, usernameAndPasswordMatch, login } from './local-storage-utils.js';
 import { onLoad } from './utils.js';
 
 const form = document.querySelector('form');
@@ -6,10 +6,6 @@ const div = document.querySelector('div');
 
 
 onLoad('./todo/index.html');
-// const user = getUser();
-// if (user){
-//     window.location = './todo/index.html';
-// }
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -28,6 +24,6 @@ form.addEventListener('submit', (e) => {
         } else {
             div.textContent = 'Invalid username or password.';
         }
-    }
+    } window.location = './todo/index.html';
 });
 

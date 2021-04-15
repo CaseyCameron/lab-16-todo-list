@@ -39,7 +39,11 @@ export function login(username) {
 }
 
 export function addTask(task) {
+    const newTask = {
+        task,
+        completed: false
+    };
     const user = getUser();
-    user.tasks.push(task);
+    user.tasks.push(newTask);
     setUser(user);
 }
