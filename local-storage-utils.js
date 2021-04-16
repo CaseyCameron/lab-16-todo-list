@@ -45,6 +45,7 @@ export function logout() {
 }
 
 export function addTask(id, task) {
+    console.log(id);
     const newTask = {
         id: id,  
         task,

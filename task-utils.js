@@ -9,16 +9,16 @@ export function renderLi(task) {
     }
 
     li.addEventListener('click', () => {
-        completeLi(task.task);
+        completeLi(task.id);
         renderTodo();
     });
 
     return li;
 }
 
-export function completeLi(todo) {
+export function completeLi(taskId) {
     const user = getUser();
-    const matchingTask = user.tasks.find((item) => item.task === todo);
+    const matchingTask = user.tasks.find((task) => task.id === taskId);
     matchingTask.completed = true;
     setUser(user);
 }
